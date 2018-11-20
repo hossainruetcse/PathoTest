@@ -16,20 +16,20 @@ public class Tag {
 	@Id
 	private String id;
 	private String name;
-	private long expiary;
+	private long expiry;
 	
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id",nullable = false)
+	@JoinColumn(name = "user_id",nullable = true)
 	private User user;
 	
 	public Tag() {
 		setId(UUID.randomUUID().toString());
 	}
 
-	public Tag(String name, long expiary) {
+	public Tag(String name, long expiry) {
 		this();
 		this.name=name;
-		this.expiary=expiary;
+		this.expiry=expiry;
 	}
 
 	public String getId() {
@@ -48,12 +48,12 @@ public class Tag {
 		this.name = name;
 	}
 
-	public long getExpiary() {
-		return expiary;
+	public long getExpiry() {
+		return expiry;
 	}
 
-	public void setExpiary(long expiary) {
-		this.expiary = expiary;
+	public void setExpiry(long expiry) {
+		this.expiry = expiry;
 	}
 
 	public User getUser() {
@@ -66,7 +66,7 @@ public class Tag {
 
 	@Override
 	public String toString() {
-		return "Tag [id=" + id + ", name=" + name + ", expiary=" + expiary + ", user=" + user + "]";
+		return "Tag [id=" + id + ", name=" + name + ", expiry=" + expiry + ", user=" + user + "]";
 	}
 	
 	

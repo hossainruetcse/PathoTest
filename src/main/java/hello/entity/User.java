@@ -25,7 +25,7 @@ public class User  {
 	private String password;
 	private String firstName;
 	private String lastName;
-	private String fullName;
+	private String name;
 	
 	@Autowired
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
@@ -40,7 +40,7 @@ public class User  {
 		this();
 		this.firstName = firstName;
 		this.lastName =lastName;
-		this.fullName =firstName+ " "+lastName;
+		this.name =firstName+ " "+lastName;
 		this.password=password;
 	}
 	
@@ -78,22 +78,22 @@ public class User  {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getFullName() {
-		return fullName;
+	public String getName() {
+		return name;
 	}
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public List getTags() {
 		return tags;
 	}
-	public void setTags(List<Tag> tags) {
-		this.tags = tags;
+	public void addTag(Tag tag) {
+		this.tags.add(tag);
 	}
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", fullName=" + fullName + ", tags=" + tags + "]";
+				+ ", name=" + name + ", tags=" + tags + "]";
 	}
 		
 }
