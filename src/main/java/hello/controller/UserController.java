@@ -1,6 +1,7 @@
 package hello.controller;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -56,6 +57,13 @@ public class UserController {
 		return ResponseEntity.ok("{}");
 		
 	}
-	
+	@RequestMapping(value = "users", method = RequestMethod.GET)
+	public ResponseEntity getUsersByTags(HttpServletRequest request) {
+		
+		String tags = request.getParameter("tags");
+		List<User> users = userService.getUsersByTag(tags);
+		return ResponseEntity.ok(users);
+	}
+			
 
 }
